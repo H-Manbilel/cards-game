@@ -1,0 +1,150 @@
+x=0
+
+while (x<4) :
+    try:
+        x=(int(input("het gedech 3andek mn rab carta 3asba!")))
+    except ValueError:
+        print("takbes w goul gedech 3andek mn carta 3asba w yezi bla 9o7b")
+
+l=[]
+def pair(r):
+
+   e= (len(r)//2)
+   r1 = []
+   r2 = []
+   for i in range(e):
+       r1.append(r[i])
+   for i in range(e, len(r)):
+       r2.append(r[i])
+   return r1, r2, 'p'
+
+def impair(r):
+    r1=[]
+    r2=[]
+    e= (len(r)+1)//2
+    for i in range(e):
+        r1.append(r[i])
+    for i in range(e,len(r)):
+        r2.append(r[i])
+
+    return r1, r2, 'i'
+
+
+
+
+
+for i in range(x+1):
+    if i == 0:
+        continue
+    l.append(i)
+
+
+
+
+ll=[]
+
+if (len(l)%2==0):
+    ll.append(pair(l))
+elif (len(l)%2==1):
+    ll.append(impair(l))
+
+while (         len(  (ll[len(ll)-1])[1])>2       ):
+    if (( len((ll[len(ll)-1])[1] )%2==1)):
+        ll.append(impair((ll[len(ll)-1])[1]))
+
+
+    elif  (( len((ll[len(ll)-1])[1] )%2==0)):
+        ll.append(pair((ll[len(ll)-1])[1]))
+
+
+
+
+
+lll=[]
+for i in ll:
+    lll.append(list(i))
+
+
+
+
+
+
+
+
+
+
+while (  len(lll)>1    ):
+
+    re = lll[len(lll)-1]
+
+
+    if (re[2]=='p'):
+        z=[]
+        for i in range((len(re[1]))             ): #tfa9ed hedhi mba3ed
+            z.append((re[0])[i])
+            z.append((re[1])[i])
+        del(lll[len(lll)-1])
+        (lll[len(lll) - 1])[1]=z
+
+
+
+
+    elif (re[2]=='i'):
+        r= re[1]
+        lel=[]
+
+        r.insert( 0,   (re[1])[len(re[1])-1]   )
+        del( r[ len(r)-1]   )
+
+
+        for i in range(len(r)):
+            lel.append(   (re[0])[i]         )
+            lel.append( r[i] )
+
+        lel.append(  (re[0])[(len(re[0]))-1]  )
+
+        del(lll[len(lll)-1])
+        (lll[len(lll) - 1])[1]= lel
+
+
+
+
+
+
+
+
+
+
+
+llll= lll[0]
+amantis=[]
+if (llll[2] =='i'):
+
+
+    op= llll[1]
+    op.insert(0,op[len(op)-1])
+    del(op[len(op)-1])
+
+
+    for i in range(len(llll[1])):
+        amantis.append( (llll[0])[i] )
+        amantis.append( op[i] )
+
+    amantis.append(  (llll[0])[ len(llll[0]) -1    ] )
+
+
+
+
+elif ( llll[2] =='p'):
+    for i in range(len(llll[1])):
+        amantis.append( (llll[0])[i] )
+        amantis.append( (llll[1])[i] )
+
+
+
+amantis.insert(0, amantis[len(amantis)-1])
+del(amantis[len(amantis)-1])
+
+amantis.reverse()
+
+print(amantis)
