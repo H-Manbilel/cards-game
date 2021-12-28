@@ -1,0 +1,11 @@
+l=[16, 10, 20, 9, 15, 8, 18, 7, 14, 6, 21, 5, 13, 4, 17, 3, 12, 2, 19, 1, 11]
+ll=[]
+for i in range(len(l)):
+       l.insert(0, l[len(l)-1])
+       del(l[len(l)-1])
+       ll.append(l[len(l)-1])
+       del (l[len(l) - 1])
+
+
+
+print(ll)
